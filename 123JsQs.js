@@ -55,3 +55,41 @@
 // var emp2 = new Employee('Dinesh Gupta', 'Company 2', 1039999);
 // var emp3 = new Employee('Erich Fromm', 'Company 3', 1299483);
 // Here each instance variable emp1, emp2, emp3 has own copy of formatSalary method.However the formatSalary2 will only be added once to an object Employee.prototype.
+// Question 4. What is “closure” in javascript ? Can you provide an example ?
+//   Answer
+// A closure is a function defined inside another function (called parent function) and has access to the variable which is declared and defined in parent function scope.
+
+// The closure has access to the variable in three scopes:
+
+// Variable declared in his own scope
+// Variable declared in parent function scope
+// Variable declared in the global namespace
+// var globalVar = "abc";
+
+// // Parent self invoking function
+// (function outerFunction(outerArg) { // begin of scope outerFunction
+//   // Variable declared in outerFunction function scope
+//   var outerFuncVar = 'x';
+//   // Closure self-invoking function
+//   (function innerFunction(innerArg) { // begin of scope innerFunction
+//     // variable declared in innerFunction function scope
+//     var innerFuncVar = "y";
+//     console.log(
+//       "outerArg = " + outerArg + "\n" +
+//       "outerFuncVar = " + outerFuncVar + "\n" +
+//       "innerArg = " + innerArg + "\n" +
+//       "innerFuncVar = " + innerFuncVar + "\n" +
+//       "globalVar = " + globalVar);
+//     // end of scope innerFunction
+//   })(5); // Pass 5 as parameter
+//   // end of scope outerFunction
+// })(7); // Pass 7 as parameter
+// innerFunction is closure which is defined inside outerFunction and has access to all variable which is declared and defined in outerFunction scope.In addition to this function defined inside the function as closure has access to the variable which is declared in global namespace.
+
+// Output of above code would be:
+
+// outerArg = 7
+// outerFuncVar = x
+// innerArg = 5
+// innerFuncVar = y
+// globalVar = abc
