@@ -116,3 +116,47 @@
 // A function can be stored as variable
 // A function can be pass as a parameter to another function
 //   A function can be returned from another function
+
+// Question 6. How to empty an array in JavaScript ?
+//   For instance:
+
+// var arrayList = ['a', 'b', 'c', 'd', 'e', 'f'];
+// How can we empty the array above ?
+
+//   Answer
+// There are a couple of ways by which we can empty an array, So let's discuss all the possible way by which we can empty an array.
+
+// Method 1
+// arrayList = [];
+// The code above will set the variable arrayList to a new empty array.This is recommended if you don't have references to the original array arrayList anywhere else because It will actually create a new empty array. You should be careful with this way of empty the array, because if you have referenced this array from another variable, then the original reference array will remain unchanged, Only use this way if you have only referenced the array by its original variable arrayList.
+
+// For instance:
+
+// var arrayList = ['a', 'b', 'c', 'd', 'e', 'f']; // Created array
+// var anotherArrayList = arrayList;  // Referenced arrayList by another variable
+// arrayList = []; // Empty the array
+// console.log(anotherArrayList); // Output ['a', 'b', 'c', 'd', 'e', 'f']
+// Method 2
+// arrayList.length = 0;
+// The code above will clear the existing array by setting its length to 0. This way of emptying an array will also update all the reference variables that point to the original array.
+
+// For instance:
+
+// var arrayList = ['a', 'b', 'c', 'd', 'e', 'f']; // Created array
+// var anotherArrayList = arrayList;  // Referenced arrayList by another variable
+// arrayList.length = 0; // Empty the array by setting length to 0
+// console.log(anotherArrayList); // Output []
+// Method 3
+// arrayList.splice(0, arrayList.length);
+// Above implementation will also work perfectly.This way of empty the array will also update all the references of the original array.
+
+// var arrayList = ['a', 'b', 'c', 'd', 'e', 'f']; // Created array
+// var anotherArrayList = arrayList;  // Referenced arrayList by another variable
+// arrayList.splice(0, arrayList.length); // Empty the array by setting length to 0
+// console.log(anotherArrayList); // Output []
+// Method 4
+// while (arrayList.length) {
+//   arrayList.pop();
+// }
+// Above implementation can also empty the array.But not recommended to use often.
+
