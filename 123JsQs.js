@@ -160,3 +160,34 @@
 
 // Array.isArray(arrayList);
 // Array.isArray is supported by Chrome 5, Firefox 4.0, IE 9, Opera 10.5 and Safari 5
+
+// Question 8. What will be the output of the following code ?
+// var output = (function (x) {
+//   delete x;
+//   return x;
+// })(0);
+
+// console.log(output);
+// Answer
+// The code above will output 0 as output.delete operator is used to delete a property from an object.Here x is not an object it's local variable. delete operator doesn't affect local variables.
+// Question 9. What will be the output of the following code ?
+// var x = 1;
+// var output = (function () {
+//   delete x;
+//   return x;
+// })();
+
+// console.log(output);
+// Answer
+// The code above will output 1 as output.delete operator is used to delete a property from an object.Here x is not an object it's global variable of type number.
+
+// Question 10. What will be the output of the following code ?
+// var x = { foo: 1 };
+// var output = (function () {
+//   delete x.foo;
+//   return x.foo;
+// })();
+
+// console.log(output);
+// Answer
+// The code above will output undefined as output.delete operator is used to delete a property from an object.Here x is an object which has foo as a property and from a self - invoking function, we are deleting the foo property of object x and after deletion, we are trying to reference deleted property foo which result undefined.
