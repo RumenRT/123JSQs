@@ -191,3 +191,26 @@
 // console.log(output);
 // Answer
 // The code above will output undefined as output.delete operator is used to delete a property from an object.Here x is an object which has foo as a property and from a self - invoking function, we are deleting the foo property of object x and after deletion, we are trying to reference deleted property foo which result undefined.
+
+// Question 11. What will be the output of the following code?
+// var Employee = {
+//   company: 'xyz'
+// }
+// var emp1 = Object.create(Employee);
+// delete emp1.company
+// console.log(emp1.company);
+// Answer
+// The code above will output xyz as output. Here emp1 object got company as prototype property. delete operator doesn't delete prototype property.
+
+// emp1 object doesn't have company as its own property. you can test it console.log(emp1.hasOwnProperty('company')); //output : false However, we can delete company property directly from Employee object using delete Employee.company or we can also delete from emp1 object using __proto__ property delete emp1.__proto__.company.
+
+// Question 12. What is undefined x 1 in JavaScript
+// var trees = ["redwood", "bay", "cedar", "oak", "maple"];
+// delete trees[3];
+// Answer
+// When you run the code above and do console.log(trees); in chrome developer console then you will get["redwood", "bay", "cedar", undefined × 1, "maple"].
+// In the recent versions of Chrome you will see the word empty of undefined x 1.
+// When you run the same code in Firefox browser console then you will get["redwood", "bay", "cedar", undefined, "maple"]
+// Clearly we can see that Chrome has its own way of displaying uninitialized index in arrays.However when you check trees[3] === undefined in any browser you will get similar output as true.
+
+// Note: Please remember that you need not check for the uninitialized index of the array in trees[3] === 'undefined × 1' it will give an error because 'undefined × 1' this is just way of displaying an uninitialized index of an array in chrome.
