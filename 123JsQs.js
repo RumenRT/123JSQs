@@ -1,216 +1,252 @@
-// Question 1. What's the difference between undefined and not defined in JavaScript
-// Answer
-// In JavaScript if you try to use a variable that doesn't exist and has not been declared, then JavaScript will throw an error var name is not defined and the script will stop executing thereafter. But If you use typeof undeclared_variable then it will return undefined.
+// // Question 1. What's the difference between undefined and not defined in JavaScript
+// // Answer
+// // In JavaScript if you try to use a variable that doesn't exist and has not been declared, then JavaScript will throw an error var name is not defined and the script will stop executing thereafter. But If you use typeof undeclared_variable then it will return undefined.
 
-// Before starting further discussion let's understand the difference between declaration and definition.
+// // Before starting further discussion let's understand the difference between declaration and definition.
 
-// var x is a declaration because you are not defining what value it holds yet, but you are declaring its existence and the need for memory allocation.
+// // var x is a declaration because you are not defining what value it holds yet, but you are declaring its existence and the need for memory allocation.
 
-// var x; // declaring x
-// console.log(x); // output: undefined
-// var x = 1 is both declaration and definition (also we can say we are doing initialisation), Here declaration and assignment of value happen inline for variable x, In JavaScript every variable declaration and function declaration brings to the top of its current scope in which it's declared then assignment happen in order this term is called hoisting.
+// // var x; // declaring x
+// // console.log(x); // output: undefined
+// // var x = 1 is both declaration and definition (also we can say we are doing initialisation), Here declaration and assignment of value happen inline for variable x, In JavaScript every variable declaration and function declaration brings to the top of its current scope in which it's declared then assignment happen in order this term is called hoisting.
 
-// A variable can be declared but not defined.When we try to access it, It will result undefined.
+// // A variable can be declared but not defined.When we try to access it, It will result undefined.
 
-// var x; // Declaration
-// typeof x === 'undefined'; // Will return true
-// A variable can be neither declared nor defined.When we try to reference such variable then the result will be not defined.
+// // var x; // Declaration
+// // typeof x === 'undefined'; // Will return true
+// // A variable can be neither declared nor defined.When we try to reference such variable then the result will be not defined.
 
-//   console.log(y);  // Output: ReferenceError: y is not defined
-// Ref Link:
-// http://stackoverflow.com/questions/20822022/javascript-variable-definition-declaration
+// //   console.log(y);  // Output: ReferenceError: y is not defined
+// // Ref Link:
+// // http://stackoverflow.com/questions/20822022/javascript-variable-definition-declaration
 
-// Question 2. For which value of x the results of the following statements are not the same ?
-// //  if( x <= 100 ) {...}
-// if (!(x > 100)) {... }
-// Answer
-// NaN <= 100 is false and NaN > 100 is also false, so if the value of x is NaN, the statements are not the same.
+// // Question 2. For which value of x the results of the following statements are not the same ?
+// // //  if( x <= 100 ) {...}
+// // if (!(x > 100)) {... }
+// // Answer
+// // NaN <= 100 is false and NaN > 100 is also false, so if the value of x is NaN, the statements are not the same.
 
-// The same holds true for any value of x that being converted to Number, returns NaN, e.g.: undefined, [1, 2, 5], { a: 22 }, etc.
+// // The same holds true for any value of x that being converted to Number, returns NaN, e.g.: undefined, [1, 2, 5], { a: 22 }, etc.
 
-// This is why you need to pay attention when you deal with numeric variables.NaN can’t be equal, less than or more than any other numeric value, so the only reliable way to check if the value is NaN, is to use isNaN() function.
+// // This is why you need to pay attention when you deal with numeric variables.NaN can’t be equal, less than or more than any other numeric value, so the only reliable way to check if the value is NaN, is to use isNaN() function.
 
-// Question 3. What is the drawback of declaring methods directly in JavaScript objects ?
-//   Answer
-// One of the drawback of declaring methods directly in JavaScript objects is that they are very memory inefficient.When you do that, a new copy of the method is created for each instance of an object.Let's see it on example:
+// // Question 3. What is the drawback of declaring methods directly in JavaScript objects ?
+// //   Answer
+// // One of the drawback of declaring methods directly in JavaScript objects is that they are very memory inefficient.When you do that, a new copy of the method is created for each instance of an object.Let's see it on example:
 
-// var Employee = function (name, company, salary) {
-//   this.name = name || "";
-//   this.company = company || "";
-//   this.salary = salary || 5000;
+// // var Employee = function (name, company, salary) {
+// //   this.name = name || "";
+// //   this.company = company || "";
+// //   this.salary = salary || 5000;
 
-//   // We can create a method like this:
-//   this.formatSalary = function () {
-//     return "$ " + this.salary;
-//   };
-// };
+// //   // We can create a method like this:
+// //   this.formatSalary = function () {
+// //     return "$ " + this.salary;
+// //   };
+// // };
 
-// // we can also create method in Employee's prototype:
-// Employee.prototype.formatSalary2 = function () {
-//   return "$ " + this.salary;
-// }
+// // // we can also create method in Employee's prototype:
+// // Employee.prototype.formatSalary2 = function () {
+// //   return "$ " + this.salary;
+// // }
 
-// //creating objects
-// var emp1 = new Employee('Yuri Garagin', 'Company 1', 1000000);
-// var emp2 = new Employee('Dinesh Gupta', 'Company 2', 1039999);
-// var emp3 = new Employee('Erich Fromm', 'Company 3', 1299483);
-// Here each instance variable emp1, emp2, emp3 has own copy of formatSalary method.However the formatSalary2 will only be added once to an object Employee.prototype.
-// Question 4. What is “closure” in javascript ? Can you provide an example ?
-//   Answer
-// A closure is a function defined inside another function (called parent function) and has access to the variable which is declared and defined in parent function scope.
+// // //creating objects
+// // var emp1 = new Employee('Yuri Garagin', 'Company 1', 1000000);
+// // var emp2 = new Employee('Dinesh Gupta', 'Company 2', 1039999);
+// // var emp3 = new Employee('Erich Fromm', 'Company 3', 1299483);
+// // Here each instance variable emp1, emp2, emp3 has own copy of formatSalary method.However the formatSalary2 will only be added once to an object Employee.prototype.
+// // Question 4. What is “closure” in javascript ? Can you provide an example ?
+// //   Answer
+// // A closure is a function defined inside another function (called parent function) and has access to the variable which is declared and defined in parent function scope.
 
-// The closure has access to the variable in three scopes:
+// // The closure has access to the variable in three scopes:
 
-// Variable declared in his own scope
-// Variable declared in parent function scope
-// Variable declared in the global namespace
-// var globalVar = "abc";
+// // Variable declared in his own scope
+// // Variable declared in parent function scope
+// // Variable declared in the global namespace
+// // var globalVar = "abc";
 
-// // Parent self invoking function
-// (function outerFunction(outerArg) { // begin of scope outerFunction
-//   // Variable declared in outerFunction function scope
-//   var outerFuncVar = 'x';
-//   // Closure self-invoking function
-//   (function innerFunction(innerArg) { // begin of scope innerFunction
-//     // variable declared in innerFunction function scope
-//     var innerFuncVar = "y";
-//     console.log(
-//       "outerArg = " + outerArg + "\n" +
-//       "outerFuncVar = " + outerFuncVar + "\n" +
-//       "innerArg = " + innerArg + "\n" +
-//       "innerFuncVar = " + innerFuncVar + "\n" +
-//       "globalVar = " + globalVar);
-//     // end of scope innerFunction
-//   })(5); // Pass 5 as parameter
-//   // end of scope outerFunction
-// })(7); // Pass 7 as parameter
-// innerFunction is closure which is defined inside outerFunction and has access to all variable which is declared and defined in outerFunction scope.In addition to this function defined inside the function as closure has access to the variable which is declared in global namespace.
+// // // Parent self invoking function
+// // (function outerFunction(outerArg) { // begin of scope outerFunction
+// //   // Variable declared in outerFunction function scope
+// //   var outerFuncVar = 'x';
+// //   // Closure self-invoking function
+// //   (function innerFunction(innerArg) { // begin of scope innerFunction
+// //     // variable declared in innerFunction function scope
+// //     var innerFuncVar = "y";
+// //     console.log(
+// //       "outerArg = " + outerArg + "\n" +
+// //       "outerFuncVar = " + outerFuncVar + "\n" +
+// //       "innerArg = " + innerArg + "\n" +
+// //       "innerFuncVar = " + innerFuncVar + "\n" +
+// //       "globalVar = " + globalVar);
+// //     // end of scope innerFunction
+// //   })(5); // Pass 5 as parameter
+// //   // end of scope outerFunction
+// // })(7); // Pass 7 as parameter
+// // innerFunction is closure which is defined inside outerFunction and has access to all variable which is declared and defined in outerFunction scope.In addition to this function defined inside the function as closure has access to the variable which is declared in global namespace.
 
-// Output of above code would be:
+// // Output of above code would be:
 
-// outerArg = 7
-// outerFuncVar = x
-// innerArg = 5
-// innerFuncVar = y
-// globalVar = abc
+// // outerArg = 7
+// // outerFuncVar = x
+// // innerArg = 5
+// // innerFuncVar = y
+// // globalVar = abc
 
-// Question 5. Write a mul function which will work properly when invoked with following syntax.
-//   console.log(mul(2)(3)(4)); // output : 24
-// console.log(mul(4)(3)(4)); // output : 48
-// Answer
-// Below is the code followed by the explanation of how it works:
+// // Question 5. Write a mul function which will work properly when invoked with following syntax.
+// //   console.log(mul(2)(3)(4)); // output : 24
+// // console.log(mul(4)(3)(4)); // output : 48
+// // Answer
+// // Below is the code followed by the explanation of how it works:
 
-// function mul(x) {
-//   return function (y) { // anonymous function
-//     return function (z) { // anonymous function
-//       return x * y * z;
-//     };
-//   };
-// }
-// Here the mul function accepts the first argument and returns the anonymous function which takes the second parameter and returns the anonymous function which takes the third parameter and returns the multiplication of arguments which is being passed in successive
+// // function mul(x) {
+// //   return function (y) { // anonymous function
+// //     return function (z) { // anonymous function
+// //       return x * y * z;
+// //     };
+// //   };
+// // }
+// // Here the mul function accepts the first argument and returns the anonymous function which takes the second parameter and returns the anonymous function which takes the third parameter and returns the multiplication of arguments which is being passed in successive
 
-// In Javascript function defined inside has access to outer function variable and function is the first class object so it can be returned by the function as well and passed as an argument in another function.
+// // In Javascript function defined inside has access to outer function variable and function is the first class object so it can be returned by the function as well and passed as an argument in another function.
 
-// A function is an instance of the Object type
-// A function can have properties and has a link back to its constructor method
-// A function can be stored as variable
-// A function can be pass as a parameter to another function
-//   A function can be returned from another function
+// // A function is an instance of the Object type
+// // A function can have properties and has a link back to its constructor method
+// // A function can be stored as variable
+// // A function can be pass as a parameter to another function
+// //   A function can be returned from another function
 
-// Question 7. How to check if an object is an array or not?
-// Answer
-// The best way to find whether an object is instance of a particular class or not using toString method from Object.prototype
+// // Question 7. How to check if an object is an array or not?
+// // Answer
+// // The best way to find whether an object is instance of a particular class or not using toString method from Object.prototype
 
-// var arrayList = [1, 2, 3];
-// One of the best use cases of type checking of an object is when we do method overloading in JavaScript.To understand this, let's say we have a method called greet which can take a single string and also a list of strings. To make our greet method workable in both situation we need to know what kind of parameter is being passed: is it single value or list of values?
+// // var arrayList = [1, 2, 3];
+// // One of the best use cases of type checking of an object is when we do method overloading in JavaScript.To understand this, let's say we have a method called greet which can take a single string and also a list of strings. To make our greet method workable in both situation we need to know what kind of parameter is being passed: is it single value or list of values?
 
-// function greet(param) {
-//   if () {
-//     // here have to check whether param is array or not
-//   }
-//   else {
-//   }
-// }
-// However, in the above implementation it might not necessary to check the type of the array, we can check for single value string and put array logic code in else block, let see below code for the same.
+// // function greet(param) {
+// //   if () {
+// //     // here have to check whether param is array or not
+// //   }
+// //   else {
+// //   }
+// // }
+// // However, in the above implementation it might not necessary to check the type of the array, we can check for single value string and put array logic code in else block, let see below code for the same.
 
-//  function greet(param) {
-//     if (typeof param === 'string') {
-//     }
-//     else {
-//       // If param is of type array then this block of code would execute
-//     }
-//   }
-// Now it's fine we can go with the previous two implementations, but when we have a situation like a parameter can be single value, array, and object type then we will be in trouble.
+// //  function greet(param) {
+// //     if (typeof param === 'string') {
+// //     }
+// //     else {
+// //       // If param is of type array then this block of code would execute
+// //     }
+// //   }
+// // Now it's fine we can go with the previous two implementations, but when we have a situation like a parameter can be single value, array, and object type then we will be in trouble.
 
-// Coming back to checking the type of an object, As we mentioned that we can use Object.prototype.toString
+// // Coming back to checking the type of an object, As we mentioned that we can use Object.prototype.toString
 
-// if (Object.prototype.toString.call(arrayList) === '[object Array]') {
-//   console.log('Array!');
-// }
-// If you are using jQuery then you can also used jQuery isArray method:
+// // if (Object.prototype.toString.call(arrayList) === '[object Array]') {
+// //   console.log('Array!');
+// // }
+// // If you are using jQuery then you can also used jQuery isArray method:
 
-// if ($.isArray(arrayList)) {
-//   console.log('Array');
-// } else {
-//   console.log('Not an array');
-// }
-// FYI jQuery uses Object.prototype.toString.call internally to check whether an object is an array or not.
+// // if ($.isArray(arrayList)) {
+// //   console.log('Array');
+// // } else {
+// //   console.log('Not an array');
+// // }
+// // FYI jQuery uses Object.prototype.toString.call internally to check whether an object is an array or not.
 
-// In modern browser, you can also use:
+// // In modern browser, you can also use:
 
-// Array.isArray(arrayList);
-// Array.isArray is supported by Chrome 5, Firefox 4.0, IE 9, Opera 10.5 and Safari 5
+// // Array.isArray(arrayList);
+// // Array.isArray is supported by Chrome 5, Firefox 4.0, IE 9, Opera 10.5 and Safari 5
 
-// Question 8. What will be the output of the following code ?
-// var output = (function (x) {
-//   delete x;
-//   return x;
-// })(0);
+// // Question 8. What will be the output of the following code ?
+// // var output = (function (x) {
+// //   delete x;
+// //   return x;
+// // })(0);
 
-// console.log(output);
-// Answer
-// The code above will output 0 as output.delete operator is used to delete a property from an object.Here x is not an object it's local variable. delete operator doesn't affect local variables.
-// Question 9. What will be the output of the following code ?
-// var x = 1;
-// var output = (function () {
-//   delete x;
-//   return x;
-// })();
+// // console.log(output);
+// // Answer
+// // The code above will output 0 as output.delete operator is used to delete a property from an object.Here x is not an object it's local variable. delete operator doesn't affect local variables.
+// // Question 9. What will be the output of the following code ?
+// // var x = 1;
+// // var output = (function () {
+// //   delete x;
+// //   return x;
+// // })();
 
-// console.log(output);
-// Answer
-// The code above will output 1 as output.delete operator is used to delete a property from an object.Here x is not an object it's global variable of type number.
+// // console.log(output);
+// // Answer
+// // The code above will output 1 as output.delete operator is used to delete a property from an object.Here x is not an object it's global variable of type number.
 
-// Question 10. What will be the output of the following code ?
-// var x = { foo: 1 };
-// var output = (function () {
-//   delete x.foo;
-//   return x.foo;
-// })();
+// // Question 10. What will be the output of the following code ?
+// // var x = { foo: 1 };
+// // var output = (function () {
+// //   delete x.foo;
+// //   return x.foo;
+// // })();
 
-// console.log(output);
-// Answer
-// The code above will output undefined as output.delete operator is used to delete a property from an object.Here x is an object which has foo as a property and from a self - invoking function, we are deleting the foo property of object x and after deletion, we are trying to reference deleted property foo which result undefined.
+// // console.log(output);
+// // Answer
+// // The code above will output undefined as output.delete operator is used to delete a property from an object.Here x is an object which has foo as a property and from a self - invoking function, we are deleting the foo property of object x and after deletion, we are trying to reference deleted property foo which result undefined.
 
-// Question 11. What will be the output of the following code?
-// var Employee = {
-//   company: 'xyz'
-// }
-// var emp1 = Object.create(Employee);
-// delete emp1.company
-// console.log(emp1.company);
-// Answer
-// The code above will output xyz as output. Here emp1 object got company as prototype property. delete operator doesn't delete prototype property.
+// // Question 11. What will be the output of the following code?
+// // var Employee = {
+// //   company: 'xyz'
+// // }
+// // var emp1 = Object.create(Employee);
+// // delete emp1.company
+// // console.log(emp1.company);
+// // Answer
+// // The code above will output xyz as output. Here emp1 object got company as prototype property. delete operator doesn't delete prototype property.
 
-// emp1 object doesn't have company as its own property. you can test it console.log(emp1.hasOwnProperty('company')); //output : false However, we can delete company property directly from Employee object using delete Employee.company or we can also delete from emp1 object using __proto__ property delete emp1.__proto__.company.
+// // emp1 object doesn't have company as its own property. you can test it console.log(emp1.hasOwnProperty('company')); //output : false However, we can delete company property directly from Employee object using delete Employee.company or we can also delete from emp1 object using __proto__ property delete emp1.__proto__.company.
 
-// Question 12. What is undefined x 1 in JavaScript
-// var trees = ["redwood", "bay", "cedar", "oak", "maple"];
+// // Question 12. What is undefined x 1 in JavaScript
+// // var trees = ["redwood", "bay", "cedar", "oak", "maple"];
+// // delete trees[3];
+// // Answer
+// // When you run the code above and do console.log(trees); in chrome developer console then you will get["redwood", "bay", "cedar", undefined × 1, "maple"].
+// // In the recent versions of Chrome you will see the word empty of undefined x 1.
+// // When you run the same code in Firefox browser console then you will get["redwood", "bay", "cedar", undefined, "maple"]
+// // Clearly we can see that Chrome has its own way of displaying uninitialized index in arrays.However when you check trees[3] === undefined in any browser you will get similar output as true.
+
+// // Note: Please remember that you need not check for the uninitialized index of the array in trees[3] === 'undefined × 1' it will give an error because 'undefined × 1' this is just way of displaying an uninitialized index of an array in chrome.
+
+// Question 13. What will be the output of the following code ?
+// var trees = ["xyz", "xxxx", "test", "ryan", "apple"];
 // delete trees[3];
+// console.log(trees.length);
 // Answer
-// When you run the code above and do console.log(trees); in chrome developer console then you will get["redwood", "bay", "cedar", undefined × 1, "maple"].
-// In the recent versions of Chrome you will see the word empty of undefined x 1.
-// When you run the same code in Firefox browser console then you will get["redwood", "bay", "cedar", undefined, "maple"]
-// Clearly we can see that Chrome has its own way of displaying uninitialized index in arrays.However when you check trees[3] === undefined in any browser you will get similar output as true.
+// The code above will output 5 as output.When we used delete operator for deleting an array element then, the array length is not affected by this.This holds even if you deleted all elements of an array using delete operator.
 
-// Note: Please remember that you need not check for the uninitialized index of the array in trees[3] === 'undefined × 1' it will give an error because 'undefined × 1' this is just way of displaying an uninitialized index of an array in chrome.
+// So when delete operator removes an array element that deleted element is no longer present in the array.In place of value at deleted index undefined x 1 in chrome and undefined is placed at the index.If you do console.log(trees) output["xyz", "xxxx", "test", undefined × 1, "apple"] in Chrome and in Firefox["xyz", "xxxx", "test", undefined, "apple"].
+
+//   Question 14. What will be the output of the following code ?
+// var bar = true;
+// console.log(bar + 0);
+// console.log(bar + "xyz");
+// console.log(bar + true);
+// console.log(bar + false);
+// Answer
+// The code above will output 1, "truexyz", 2, 1 as output.Here's a general guideline for the plus operator:
+
+// Number + Number -> Addition
+// Boolean + Number -> Addition
+// Boolean + Boolean -> Addition
+// Number + String -> Concatenation
+// String + Boolean -> Concatenation
+// String + String -> Concatenation
+// Question 15. What will be the output of the following code ?
+// var z = 1, y = z = typeof y;
+// console.log(y);
+// Answer
+// The code above will print string "undefined" as output.According to associativity rule operator with the same precedence are processed based on their associativity property of operator.Here associativity of the assignment operator is Right to Left so first typeof y will evaluate first which is string "undefined" and assigned to z and then y would be assigned the value of z.The overall sequence will look like that:
+
+// var z;
+// z = 1;
+// var y;
+// z = typeof y;
+// y = z;
